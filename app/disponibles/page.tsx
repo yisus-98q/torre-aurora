@@ -2,6 +2,7 @@
 import { useEdificioStore } from "@/store/useEdificioStore";
 import Link from "next/link";
 import { Bed, Bath, Maximize, ArrowRight } from "lucide-react";
+import type { EstadoDepto } from "@/types/depto";
 
 export default function DisponiblesPage() {
   const filtros = useEdificioStore(s => s.filtros);
@@ -33,7 +34,7 @@ export default function DisponiblesPage() {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             <span className="text-white/50">Estado</span>
-            <select value={filtros.estado} onChange={e => setFiltros({ estado: e.target.value as any })} className="bg-neutral-900 border border-white/10 rounded-lg px-3 py-2">
+            <select value={filtros.estado} onChange={e => setFiltros({ estado: e.target.value as EstadoDepto | "todos" })} className="bg-neutral-900 border border-white/10 rounded-lg px-3 py-2">
               <option value="todos">Todos</option>
               <option value="disponible">Disponible</option>
               <option value="reservado">Reservado</option>

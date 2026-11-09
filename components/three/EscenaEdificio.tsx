@@ -1,5 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
+import { ACESFilmicToneMapping } from "three";
 import { OrbitControls, ContactShadows } from "@react-three/drei";
 import { Suspense } from "react";
 import EdificioGLB from "./EdificioGLB";
@@ -16,7 +17,7 @@ export default function EscenaEdificio() {
       shadows
       camera={{ position: [0, 14, 34], fov: 35 }}
       dpr={[1, 2]}
-      gl={{ antialias: true, toneMapping: "ACESFilmic" }}
+      gl={{ antialias: true, toneMapping: ACESFilmicToneMapping }}
       onPointerMissed={deseleccionar}
     >
       <color attach="background" args={["#0a0a0f"]} />

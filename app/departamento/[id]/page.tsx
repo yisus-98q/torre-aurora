@@ -1,15 +1,18 @@
+"use client";
+
+import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useEdificioStore } from "@/store/useEdificioStore";
 
 export default function DeptoPage() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const depto = useEdificioStore(s => s.depto);
   const seleccionar = useEdificioStore(s => s.seleccionar);
 
   // Seleccionar el departamento cuando la página carga
   useEffect(() => {
     if (id) seleccionar(id);
-  }, [id]);
+  }, [id, seleccionar]);
 
   if (!depto) return (
     <div className="min-h-screen flex items-center justify-center text-white">
