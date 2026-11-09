@@ -11,7 +11,7 @@ export default function FeaturedUnits() {
       <div className="featured-units-inner">
         <div className="featured-units-heading">
           <div>
-            <p className="eyebrow">Encuentra tu espacio</p>
+            <p className="eyebrow">Disponibles para la venta</p>
             <h2 id="featured-units-title">Unidades <em>destacadas.</em></h2>
           </div>
           <Link className="text-link featured-all-link" href="/disponibles">
@@ -66,8 +66,8 @@ export default function FeaturedUnits() {
         </div>
 
         <div className="featured-units-cta">
-          <p>¿Buscas algo diferente? Hay más espacios por descubrir.</p>
-          <Link className="btn-outline" href="/disponibles">Explorar disponibilidad</Link>
+          <p>¿Buscas otro piso o superficie? Mira todas las unidades en venta.</p>
+          <Link className="btn-outline" href="/disponibles">Ver todas las unidades en venta</Link>
         </div>
       </div>
     </section>
