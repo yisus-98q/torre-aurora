@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/70 to-transparent">
+    <header className="site-navbar fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/70 to-transparent">
       <Link href="/" className="text-white font-semibold tracking-wide">
         <span className="text-2xl font-light">
           TORRE <span className="text-[#d4a373] font-bold">AURORA</span>

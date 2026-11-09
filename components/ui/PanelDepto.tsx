@@ -28,7 +28,7 @@ export default function PanelDepto() {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 450, opacity: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 30 }}
-          className="fixed right-0 top-0 h-full w-full sm:w-[420px] z-50 bg-[#111]/95 backdrop-blur-xl border-l border-white/10 text-white overflow-y-auto shadow-2xl"
+          className="dept-panel fixed right-0 top-0 h-full w-full sm:w-[420px] z-50 bg-[#111]/95 backdrop-blur-xl border-l border-white/10 text-white overflow-y-auto shadow-2xl"
         >
           <div className="relative h-72 bg-neutral-900">
             {depto.fotos[0] && (

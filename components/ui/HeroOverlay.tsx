@@ -5,7 +5,7 @@ export default function HeroOverlay() {
   const seleccionado = useEdificioStore(s => s.seleccionado);
   if (seleccionado) return null;
   return (
-    <div className="absolute top-24 left-6 sm:left-10 max-w-sm text-white pointer-events-none">
+    <div className="hero-copy absolute top-24 left-6 sm:left-10 max-w-sm text-white pointer-events-none">
       <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
         Vivi la<br /><span className="text-[#d4a373]">experiencia</span><br />en 3D
       </h1>
