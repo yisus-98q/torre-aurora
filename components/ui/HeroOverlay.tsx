@@ -4,8 +4,8 @@ import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { useEdificioStore } from "@/store/useEdificioStore";
 
 export default function HeroOverlay() {
-  const seleccionado = useEdificioStore((state) => state.seleccionado);
-  if (seleccionado) return null;
+  const activo = useEdificioStore((state) => Boolean(state.seleccionado || state.enfocado));
+  if (activo) return null;
 
   return (
     <div className="hero-copy absolute text-white">
@@ -15,7 +15,7 @@ export default function HeroOverlay() {
         <em>comienza aquí.</em>
       </h1>
       <p className="hero-description">
-        Recorre el edificio en 3D, descubre cada tipología y encuentra la que se siente tuya.
+        Toca cualquier departamento de la fachada para acercarte y recorrer sus ambientes.
       </p>
       <div className="hero-actions">
         <Link className="btn-primary" href="/disponibles">

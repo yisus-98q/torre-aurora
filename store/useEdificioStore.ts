@@ -11,10 +11,12 @@ interface Filtros {
 
 interface EdificioState {
   seleccionado: string | null;
+  enfocado: string | null;
   hover: string | null;
   depto: Departamento | null;
   filtros: Filtros;
   seleccionar: (id: string | null) => void;
+  enfocar: (id: string | null) => void;
   setHover: (id: string | null) => void;
   setFiltros: (f: Partial<Filtros>) => void;
   resetFiltros: () => void;
@@ -30,6 +32,7 @@ const FILTROS_INICIALES: Filtros = {
 
 export const useEdificioStore = create<EdificioState>((set, get) => ({
   seleccionado: null,
+  enfocado: null,
   hover: null,
   depto: null,
   filtros: FILTROS_INICIALES,
@@ -38,6 +41,8 @@ export const useEdificioStore = create<EdificioState>((set, get) => ({
     seleccionado: id,
     depto: id ? DEPARTAMENTOS.find(d => d.id === id) ?? null : null,
   }),
+
+  enfocar: (id) => set({ enfocado: id }),
 
   setHover: (id) => set({ hover: id }),
 
