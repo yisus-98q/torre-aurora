@@ -1595,3 +1595,110 @@ select {
     display: none;
   }
 }
+
+/* Secuencia: acercar, encender luces, entrar */
+.facade-unit-light {
+  position: absolute;
+  inset: -6% -4%;
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse 58% 52% at 50% 44%, rgba(255, 214, 150, 0.95), rgba(255, 170, 90, 0.45) 55%, transparent 78%),
+    linear-gradient(180deg, rgba(255, 196, 120, 0.35), rgba(255, 160, 80, 0.12));
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.facade-scene[data-fase="enfocando"] .facade-unit[data-activo="true"] .facade-unit-light,
+.facade-scene[data-fase="entrando"] .facade-unit[data-activo="true"] .facade-unit-light {
+  animation: luz-encender 900ms steps(1, end) 950ms forwards, luz-calida 1.6s ease-in-out 1.85s infinite alternate;
+}
+
+.facade-scene[data-fase="enfocando"] .facade-unit[data-activo="true"],
+.facade-scene[data-fase="entrando"] .facade-unit[data-activo="true"] {
+  border-color: transparent;
+  background: transparent;
+  animation: halo-encender 900ms ease-out 1.25s forwards;
+}
+
+.facade-scene[data-fase="entrando"] .facade-camera {
+  transition: transform 700ms cubic-bezier(0.55, 0, 0.9, 0.35);
+}
+
+.facade-scene[data-fase="entrando"] .facade-unit,
+.facade-scene[data-fase="entrando"] .facade-unit-dot,
+.facade-scene[data-fase="entrando"] .facade-unit-label {
+  pointer-events: none;
+}
+
+.facade-scene[data-fase="entrando"] .facade-unit-dot,
+.facade-scene[data-fase="entrando"] .facade-unit-label {
+  opacity: 0;
+}
+
+.facade-scene[data-fase="entrando"] .facade-vignette {
+  opacity: 0;
+}
+
+.facade-scene[data-fase="entrando"] .facade-film-bar {
+  height: 11vh;
+}
+
+.facade-scene[data-fase="entrando"] .facade-film-bar span {
+  opacity: 1;
+}
+
+.facade-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, #ffe2b8 0%, #f3b779 45%, #6b4426 100%);
+  opacity: 0;
+  transition: opacity 650ms ease-in;
+}
+
+.facade-scene[data-fase="entrando"] .facade-flash {
+  opacity: 1;
+}
+
+.unit-viewer-entry,
+.unit-viewer-glow {
+  position: absolute;
+  inset: 0;
+}
+
+.unit-viewer-glow {
+  z-index: 3;
+  background: radial-gradient(ellipse at 50% 50%, #ffe2b8 0%, #f3b779 45%, #6b4426 100%);
+  pointer-events: none;
+}
+
+@keyframes luz-encender {
+  0% { opacity: 0; }
+  12% { opacity: 0.55; }
+  20% { opacity: 0.05; }
+  34% { opacity: 0.8; }
+  42% { opacity: 0.25; }
+  56%, 100% { opacity: 1; }
+}
+
+@keyframes luz-calida {
+  from { opacity: 1; }
+  to { opacity: 0.86; }
+}
+
+@keyframes halo-encender {
+  from { box-shadow: 0 0 0 rgba(255, 190, 110, 0); }
+  to { box-shadow: 0 0 28px 6px rgba(255, 190, 110, 0.55), 0 0 90px 20px rgba(255, 170, 90, 0.28); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .facade-camera,
+  .facade-flash {
+    transition: none;
+  }
+
+  .facade-unit-light,
+  .facade-unit-dot {
+    animation: none !important;
+  }
+}

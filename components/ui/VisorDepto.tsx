@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Bath, BedDouble, Car, ChevronLeft, ChevronRight, Maximize2, MessageCircle, Move, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import VisorAmbiente from "./VisorAmbiente";
@@ -18,6 +18,7 @@ export default function VisorDepto() {
 
 function VisorAbierto({ depto }: { depto: Departamento }) {
   const [indice, setIndice] = useState(0);
+  const reducirMovimiento = useReducedMotion();
   const cerrarRef = useRef<HTMLButtonElement>(null);
   const total = depto.fotos.length;
   const foto = depto.fotos[indice];
@@ -60,14 +61,28 @@ function VisorAbierto({ depto }: { depto: Departamento }) {
       aria-labelledby="unit-viewer-title"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.45 }}
+      transition={{ duration: 0.25 }}
     >
       <button ref={cerrarRef} type="button" className="unit-viewer-close" onClick={cerrar} aria-label="Cerrar y volver a la fachada">
         <X size={18} aria-hidden="true" />
       </button>
 
       <div className="unit-viewer-stage">
-        {foto && <VisorAmbiente foto={foto} indice={indice} />}
+        <motion.div
+          className="unit-viewer-entry"
+          initial={reducirMovimiento ? false : { scale: 1.22, filter: "blur(10px) brightness(1.5)" }}
+          animate={{ scale: 1, filter: "blur(0px) brightness(1)" }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {foto && <VisorAmbiente foto={foto} indice={indice} />}
+        </motion.div>
+        <motion.div
+          className="unit-viewer-glow"
+          aria-hidden="true"
+          initial={{ opacity: reducirMovimiento ? 0 : 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.3, ease: "easeOut" }}
+        />
 
         <div className="unit-viewer-hud">
           <p className="eyebrow">Piso {depto.piso} · Depto {depto.numero}</p>
@@ -108,7 +123,12 @@ function VisorAbierto({ depto }: { depto: Departamento }) {
         </div>
       </div>
 
-      <aside className="unit-viewer-info">
+      <motion.aside
+        className="unit-viewer-info"
+        initial={reducirMovimiento ? false : { opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      >
         <span className="unit-badge" data-estado={depto.estado}>{ESTADOS[depto.estado]}</span>
         <h2 id="unit-viewer-title">Departamento {depto.numero}</h2>
         <p className="unit-viewer-meta">Piso {depto.piso} · {depto.ambientes} ambientes · Orientación {depto.orientacion}</p>
@@ -140,7 +160,7 @@ function VisorAbierto({ depto }: { depto: Departamento }) {
             Ficha completa <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
-      </aside>
+      </motion.aside>
     </motion.div>
   );
 }
