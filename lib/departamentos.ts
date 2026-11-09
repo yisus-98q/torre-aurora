@@ -1,17 +1,17 @@
 import { Departamento } from "@/types/depto";
 
 const FOTOS_MODERNO = [
-  { url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80", alt: "Living luminoso", ambiente: "Living" },
-  { url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80", alt: "Cocina integrada", ambiente: "Cocina" },
-  { url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80", alt: "Dormitorio principal", ambiente: "Dormitorio" },
-  { url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80", alt: "Bano completo", ambiente: "Bano" },
+  { url: "/aurora-living.png", alt: "Living de departamento con luz natural", ambiente: "Living" },
+  { url: "/aurora-kitchen.png", alt: "Cocina integrada con isla de piedra", ambiente: "Cocina" },
+  { url: "/aurora-bedroom.png", alt: "Dormitorio principal de tonos cálidos", ambiente: "Dormitorio" },
+  { url: "/aurora-bathroom.png", alt: "Baño contemporáneo con piedra natural", ambiente: "Baño" },
 ];
 
 const FOTOS_CLASICO = [
-  { url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80", alt: "Living con madera", ambiente: "Living" },
-  { url: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=80", alt: "Cocina con isla", ambiente: "Cocina" },
-  { url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80", alt: "Suite principal", ambiente: "Dormitorio" },
-  { url: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80", alt: "Bano en suite", ambiente: "Bano" },
+  { url: "/aurora-living.png", alt: "Living de departamento con madera cálida", ambiente: "Living" },
+  { url: "/aurora-kitchen.png", alt: "Cocina integrada con isla de piedra", ambiente: "Cocina" },
+  { url: "/aurora-bedroom.png", alt: "Suite principal con luz natural", ambiente: "Dormitorio" },
+  { url: "/aurora-bathroom.png", alt: "Baño en suite con piedra natural", ambiente: "Baño" },
 ];
 
 export const DEPARTAMENTOS: Departamento[] = [

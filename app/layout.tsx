@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Torre Aurora - Departamentos en 3D",
-  description: "Explora los 12 departamentos de la Torre Aurora en una experiencia 3D interactiva.",
+  title: "Torre Aurora | Un hogar para vivir a tu manera",
+  description: "Explora Torre Aurora en 3D y descubre departamentos de 2 a 4 dormitorios con balcón.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
