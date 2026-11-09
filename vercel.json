@@ -1,0 +1,17 @@
+{
+  "builds": {
+    "api": "api/**/*.{js,ts,jsx,tsx}",
+    "app": "app/**/*.{js,ts,jsx,tsx}",
+    "default": "next build"
+  },
+  "functions": {
+    "api/**/*.{js,ts,jsx,tsx}": {
+      "runtime": "node18"
+    }
+  },
+  "routes": {
+    "/api/(.*)": "api/$1",
+    "/(.*)": "/app/$1"
+  },
+  "headers": [{ "source": "/(.*)", "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }] }
+]
