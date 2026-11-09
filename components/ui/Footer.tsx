@@ -1,7 +1,11 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0 inset-x-0 py-4 text-center text-white/40 text-xs pointer-events-none">
-      (c) 2025 Torre Aurora - Todos los derechos reservados
+    <footer className="site-footer">
+      <Link href="/" className="site-footer-brand">TORRE <span>AURORA</span></Link>
+      <p>© {new Date().getFullYear()} Torre Aurora. Todos los derechos reservados.</p>
+      <Link href="/disponibles" className="site-footer-link">Explorar unidades</Link>
     </footer>
   );
 }

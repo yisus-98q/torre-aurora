@@ -2,6 +2,7 @@
 import { useEdificioStore } from "@/store/useEdificioStore";
 import Link from "next/link";
 import { Bed, Bath, Maximize, ArrowRight } from "lucide-react";
+import type { EstadoDepto } from "@/types/depto";
 
 export default function DisponiblesPage() {
   const filtros = useEdificioStore(s => s.filtros);
@@ -10,13 +11,13 @@ export default function DisponiblesPage() {
   const deptos = useEdificioStore(s => s.deptosFiltrados)();
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white p-6 sm:p-12 overflow-auto">
+    <main className="availability-page min-h-screen bg-neutral-950 text-white p-6 sm:p-12 overflow-auto">
       <div className="max-w-6xl mx-auto">
         <Link href="/" className="text-sm text-white/60 hover:text-white">Volver al edificio</Link>
         <h1 className="text-4xl font-bold mt-4">Departamentos disponibles</h1>
         <p className="text-white/50 mt-2">{deptos.length} unidades</p>
 
-        <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div className="filter-panel mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 grid grid-cols-1 sm:grid-cols-4 gap-4">
           <label className="flex flex-col gap-1 text-sm">
             <span className="text-white/50">Precio max</span>
             <input type="range" min={50000} max={500000} step={10000} value={filtros.precioMax} onChange={e => setFiltros({ precioMax: Number(e.target.value) })} />
@@ -33,7 +34,7 @@ export default function DisponiblesPage() {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             <span className="text-white/50">Estado</span>
-            <select value={filtros.estado} onChange={e => setFiltros({ estado: e.target.value as any })} className="bg-neutral-900 border border-white/10 rounded-lg px-3 py-2">
+            <select value={filtros.estado} onChange={e => setFiltros({ estado: e.target.value as EstadoDepto | "todos" })} className="bg-neutral-900 border border-white/10 rounded-lg px-3 py-2">
               <option value="todos">Todos</option>
               <option value="disponible">Disponible</option>
               <option value="reservado">Reservado</option>
@@ -45,7 +46,7 @@ export default function DisponiblesPage() {
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {deptos.map(d => (
-            <Link key={d.id} href={`/departamento/${d.id}`} className="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
+            <Link key={d.id} href={`/departamento/${d.id}`} className="unit-card group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
               <div className="aspect-video bg-neutral-800 overflow-hidden">
                 {d.fotos[0] && <img src={d.fotos[0].url} alt={d.fotos[0].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />}
               </div>

@@ -1,18 +1,17 @@
-"use client";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/70 to-transparent">
-      <Link href="/" className="text-white font-semibold tracking-wide">
-        <span className="text-2xl font-light">
-          TORRE <span className="text-[#d4a373] font-bold">AURORA</span>
-        </span>
+    <header className="site-navbar fixed inset-x-0 top-0 z-40 flex items-center justify-between">
+      <Link href="/" className="site-brand" aria-label="Torre Aurora, inicio">
+        <span>TORRE <strong>AURORA</strong></span>
       </Link>
-      <nav className="hidden md:flex gap-6 text-sm text-white/70">
-        <Link href="/disponibles" className="hover:text-white transition">Disponibilidad</Link>
-        <a href="https://wa.me/5491100000000" className="hover:text-white transition">Contacto</a>
+      <nav className="site-nav" aria-label="Navegación principal">
+        <Link href="/#proyecto">El proyecto</Link>
+        <Link href="/#unidades">Unidades</Link>
+        <Link className="nav-availability" href="/disponibles">Disponibilidad</Link>
       </nav>
+      <Link className="nav-mobile-availability" href="/disponibles">Ver unidades</Link>
     </header>
   );
 }
